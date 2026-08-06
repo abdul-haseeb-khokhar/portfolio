@@ -1,96 +1,103 @@
+import MonogramCard from './MonogramCard'
+import Reveal from './Reveal'
+
+const stats = [
+    { number: '3+', label: 'Production-style backend systems shipped' },
+    { number: '7', label: 'Independent microservices in one architecture' },
+]
+
 const About = () => {
-    const stats = [
-        {
-            number: '3+',
-            label: 'Full-stack apps built\nand deployed to production'
-        },
-        {
-            number: '10+',
-            label: 'Technologies across\n frontend, backend & databases',
-        },
-
-    ]
-
-
     return (
-        <section id='about' style={{
-            padding: 'var(--section-padding)', maxWidth: 'var(--max-width)', margin: '0 auto',
+        <section id="about" style={{
+            padding: 'var(--section-padding)', maxWidth: 'var(--max-width)', margin: '0 auto', textAlign: 'center',
         }}>
-            <p className="section-label">About Me</p>
+            <Reveal>
+                <MonogramCard size={200} />
 
-            <div style={{
-                display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center'
-            }}>
-                <div>
-                    <h2 style={{
-                        fontSize: 'clamp(1.8rem, 3vw, 2.4rem)',
-                        fontWeight: 700,
-                        letterSpacing: '-1px',
-                        marginBottom: '1.25rem'
+                <h2 className="section-heading" style={{ marginTop: '2.5rem' }}>
+                    Crafting Reliable <br />
+                    <span style={{ fontStyle: 'italic', color: 'var(--accent)', fontWeight: 500 }}>Backend Systems</span>
+                </h2>
+                <div className="section-rule" />
+            </Reveal>
+
+            <Reveal delay={0.1}>
+                <div style={{ maxWidth: '620px', margin: '2rem auto 0', display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
+                    <p style={{ fontSize: '1rem' }}>
+                        I'm a backend developer and BS Computer Science graduate (University
+                        of Gujrat, 2026) who builds production-style systems end to end,
+                        with a bias toward layered architecture and deliberate trade-offs
+                        over tutorials.
+                    </p>
+                    <p style={{ fontSize: '1rem' }}>
+                        My recent work includes <strong style={{ color: 'var(--text)', fontWeight: 600 }}>StorePulse</strong>,
+                        a multi-tenant analytics SaaS with a Redis-buffered ingestion pipeline
+                        behind NGINX on GCP; <strong style={{ color: 'var(--text)', fontWeight: 600 }}>Digital Kisan</strong>,
+                        a farmer-to-buyer marketplace with 7 microservices, an escrow payment
+                        system, and InDrive-style transport bidding; and{' '}
+                        <strong style={{ color: 'var(--text)', fontWeight: 600 }}>Journal Analyst</strong>,
+                        an AI-powered trading journal with Google OAuth and Gemini-generated
+                        coaching insights.
+                    </p>
+                    <p style={{ fontSize: '1rem' }}>
+                        I value clean architecture and clear reasoning — every system I build
+                        is chosen deliberately, not by default.
+                    </p>
+                </div>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+                <div style={{ marginTop: '2.25rem' }}>
+                    <p style={{
+                        fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.15rem', color: 'var(--heading)',
                     }}>
-                        I don't just learn - <br />
-                        <span style={{ color: 'var(--accent)' }}>I ship.</span>
-                    </h2>
-                    <p style={{ marginBottom: '1rem' }}>
-                        I'm a full-stack developer who builds real products
-                        instead of following tutorials. Every concept I learn goes straight
-                        into a project — from JWT auth flows to microservice architectures.
+                        Abdul Haseeb Khokhar
                     </p>
-                    <p style={{ marginBottom: '1.75rem' }}>
-                        My recent work includes{' '}
-                        <strong style={{ color: 'var(--text)', fontWeight: 500 }}>
-                            JournalAnalyst
-                        </strong>
-                        , a microservices trading journal with AI insights,{' '}
-                        <strong style={{ color: 'var(--text)', fontWeight: 500 }}>
-                            Digital Kisan
-                        </strong>
-                        , a farmer-to-buyer marketplace with 7 backend services, an
-                        escrow payment system, and InDrive-style transport bidding, and {' '}
-                        <strong style={{color: 'var(--text)', fontWeight: 500}}>
-                            Reclaim
-                        </strong>
-                        , Lost and found --- Community items recovery platform
+                    <p style={{ fontStyle: 'italic', fontSize: '0.9rem', color: 'var(--muted)' }}>
+                        Backend Developer
                     </p>
-                    <a
-                        href="/Abdul_Haseeb_Khokhar_CV.pdf"
-                        download
-                        className='btn-ghost'
-                        style={{ width: 'fit-content' }}
-                    >
-                        Here's my CV
-                    </a>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    {stats.map((stat, index) => (
-                        <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', padding: '1.25rem', background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', transition: 'border-color 0.2s' }}
-                            onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(110, 231, 183, 0.25)'}
-                            onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}>
-                            <span
-                                style={{
-                                    fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 800, color: 'var(--accent)', minWidth: '64px', lineHeight: 1
-                                }}>
+                <a
+                    href="/Abdul_Haseeb_Khokhar_CV.pdf"
+                    download
+                    className="btn-ghost"
+                    style={{ width: 'fit-content', margin: '2rem auto 0' }}
+                >
+                    Here's my CV
+                </a>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+                <div className="about-stats" style={{
+                    display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', maxWidth: '560px', margin: '3rem auto 0',
+                }}>
+                    {stats.map((stat) => (
+                        <div key={stat.label} style={{
+                            padding: '1.25rem', background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)',
+                        }}>
+                            <span style={{
+                                display: 'block', fontFamily: 'var(--font-display)', fontSize: '1.8rem', fontWeight: 700, color: 'var(--accent)', marginBottom: '0.35rem',
+                            }}>
                                 {stat.number}
                             </span>
-                            <span style={{
-                                fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.5, whiteSpace: 'pre-line'
-                            }}>
+                            <span style={{ fontSize: '0.8rem', color: 'var(--muted)', lineHeight: 1.5 }}>
                                 {stat.label}
                             </span>
                         </div>
                     ))}
                 </div>
-            </div>
-            <style>{`@media(max-width: 640px){
-            #about > div {
-            grid-template-columns: 1fr !important;
-            gap: 2.5rem !important
-            }
-            }`
-            }</style>
+            </Reveal>
+
+            <style>{`
+                @media (max-width: 480px) {
+                    .about-stats {
+                        grid-template-columns: 1fr !important;
+                    }
+                }
+            `}</style>
         </section>
     )
 }
 
-export default About;
+export default About
